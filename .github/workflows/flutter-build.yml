@@ -1,0 +1,61 @@
+name: Flutter validation and builds
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'mobile/**'
+      - '.github/workflows/flutter-build.yml'
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate Android and iOS platform projects
+        run: flutter create --project-name rashadfinance --org com.rashadfinance --platforms=android,ios .
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Analyze
+        run: flutter analyze
+      - name: Test
+        run: flutter test
+      - name: Build release APK
+        run: flutter build apk --release --dart-define=API_BASE_URL=https://YOUR-DOMAIN.com
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rashadfinance-android-apk
+          path: mobile/build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
+
+  ios:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate Android and iOS platform projects
+        run: flutter create --project-name rashadfinance --org com.rashadfinance --platforms=android,ios .
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Analyze
+        run: flutter analyze
+      - name: Build iOS (unsigned)
+        run: flutter build ios --release --no-codesign --dart-define=API_BASE_URL=https://YOUR-DOMAIN.com
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rashadfinance-ios-app-unsigned
+          path: mobile/build/ios/iphoneos/Runner.app
+          if-no-files-found: error
