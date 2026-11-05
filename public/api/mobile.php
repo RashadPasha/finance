@@ -2,7 +2,7 @@
 declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
-header('Cache-Control: public, max-age=60');
+header($_SERVER['REQUEST_METHOD']==='POST' ? 'Cache-Control: no-store' : 'Cache-Control: public, max-age=60');
 function out(array $data,int $status=200):never{http_response_code($status);echo json_encode($data,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);exit;}
 $configFile=dirname(__DIR__,2).'/config/config.php';
 if(!is_file($configFile))out(['ok'=>false,'message'=>'Platforma konfiqurasiya edilməyib.'],503);
