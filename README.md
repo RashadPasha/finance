@@ -38,4 +38,4 @@ Premium dark navy + white + charcoal, editorial typography, restrained gold/blue
 - Public repository is intentional for source code only; do not put private data in it.
 
 ## Current status
-Foundation and database schema are being established. Admin CRUD, public content pages, API authentication and Flutter clients are subsequent implementation milestones.
+Implemented in source: responsive public homepage, searchable/paginated blog, article detail pages and view tracking, admin login/dashboard, CRUD screens for articles, categories, YouTube videos, services, projects and portfolio, inquiry status management, site settings, contact endpoint and server-side AI chat endpoint.\n\nNot yet completed or production-verified: secure image file uploads, article link management UI, full end-to-end PHP/MySQL testing on DirectAdmin, live OpenAI API verification, production deployment, Flutter Android/iOS app and APK/IPA builds. Do not treat the project as production-ready until server configuration, HTTPS, backups and security testing are complete.
