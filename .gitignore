@@ -1,0 +1,13 @@
+/config/config.php
+.env
+.env.*
+!/config/config.example.php
+/vendor/
+/node_modules/
+/.dart_tool/
+/build/
+/dist/
+/storage/logs/*
+/storage/uploads/*
+.DS_Store
+Thumbs.db
