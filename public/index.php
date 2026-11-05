@@ -33,7 +33,7 @@ function h(?string $v): string { return htmlspecialchars($v ?? '', ENT_QUOTES, '
 </head>
 <body>
 <header class="site-header"><a class="brand" href="#"><span class="brand-mark">R</span><span>RASHAD<span class="brand-light">FINANCE</span></span></a>
-<nav><a href="#about">Haqqımda</a><a href="#services">Xidmətlər</a><a href="#projects">Layihələr</a><a href="#insights">Bloq</a><a href="#contact">Əlaqə</a></nav>
+<nav><a href="#about">Haqqımda</a><a href="#services">Xidmətlər</a><a href="#projects">Layihələr</a><a href="#portfolio">Portfolio</a><a href="#videos">Videolar</a><a href="blog.php">Bloq</a><a href="#contact">Əlaqə</a></nav>
 <a class="header-cta" href="#contact">Konsultasiya al <span>↗</span></a></header>
 <main>
 <section class="hero">
